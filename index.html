@@ -25,7 +25,7 @@
   <!-- Big Picture Mode Overlay -->
   <div class="big-picture-overlay" id="bigPictureOverlay">
     <div class="big-picture-content">
-      <img src="hero.png" alt="App preview illustration" class="big-picture-image" id="bigPictureImage" />
+      <img src="hero.png" alt="App preview illustration" class="big-picture-image" />
       <button class="big-picture-close" id="closeBigPicture" aria-label="Close big picture mode">&times;</button>
     </div>
   </div>
@@ -36,6 +36,12 @@
     const bigPictureOverlay = document.getElementById('bigPictureOverlay');
     const closeBigPicture = document.getElementById('closeBigPicture');
 
+    // Function to close big picture mode
+    function closeBigPictureMode() {
+      bigPictureOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
     // Open big picture mode when hero image is clicked
     heroImage.addEventListener('click', function() {
       bigPictureOverlay.classList.add('active');
@@ -43,24 +49,19 @@
     });
 
     // Close big picture mode when close button is clicked
-    closeBigPicture.addEventListener('click', function() {
-      bigPictureOverlay.classList.remove('active');
-      document.body.style.overflow = ''; // Restore scrolling
-    });
+    closeBigPicture.addEventListener('click', closeBigPictureMode);
 
     // Close big picture mode when clicking on the overlay background
     bigPictureOverlay.addEventListener('click', function(e) {
       if (e.target === bigPictureOverlay) {
-        bigPictureOverlay.classList.remove('active');
-        document.body.style.overflow = '';
+        closeBigPictureMode();
       }
     });
 
     // Close big picture mode with ESC key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && bigPictureOverlay.classList.contains('active')) {
-        bigPictureOverlay.classList.remove('active');
-        document.body.style.overflow = '';
+        closeBigPictureMode();
       }
     });
   </script>

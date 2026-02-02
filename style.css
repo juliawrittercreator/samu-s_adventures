@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+/* HERO CONTAINER */
+.hero {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* BIG IMAGE */
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* APPLE BADGE */
+.apple-badge {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+.apple-badge img {
+  width: 160px;
+}
+
+/* EMAIL SIGNUP */
+.waitlist {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.waitlist input {
+  padding: 10px 14px;
+  font-size: 16px;
+}
+
+.waitlist button {
+  padding: 10px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}

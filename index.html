@@ -8,7 +8,7 @@
 <body>
 
   <section class="hero">
-    <img src="hero.png" alt="App preview illustration" class="hero-image" />
+    <img src="hero.png" alt="App preview illustration" class="hero-image" id="heroImage" />
 
     <!-- Apple download badge -->
     <a href="#" class="apple-badge">
@@ -21,6 +21,49 @@
       <button type="submit">Join the waitlist</button>
     </form>
   </section>
+
+  <!-- Big Picture Mode Overlay -->
+  <div class="big-picture-overlay" id="bigPictureOverlay">
+    <div class="big-picture-content">
+      <img src="hero.png" alt="App preview illustration" class="big-picture-image" id="bigPictureImage" />
+      <button class="big-picture-close" id="closeBigPicture" aria-label="Close big picture mode">&times;</button>
+    </div>
+  </div>
+
+  <script>
+    // Big Picture Mode functionality
+    const heroImage = document.getElementById('heroImage');
+    const bigPictureOverlay = document.getElementById('bigPictureOverlay');
+    const closeBigPicture = document.getElementById('closeBigPicture');
+
+    // Open big picture mode when hero image is clicked
+    heroImage.addEventListener('click', function() {
+      bigPictureOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
+    });
+
+    // Close big picture mode when close button is clicked
+    closeBigPicture.addEventListener('click', function() {
+      bigPictureOverlay.classList.remove('active');
+      document.body.style.overflow = ''; // Restore scrolling
+    });
+
+    // Close big picture mode when clicking on the overlay background
+    bigPictureOverlay.addEventListener('click', function(e) {
+      if (e.target === bigPictureOverlay) {
+        bigPictureOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Close big picture mode with ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && bigPictureOverlay.classList.contains('active')) {
+        bigPictureOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
 
 </body>
 </html>
